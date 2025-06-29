@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
-import mongoose from 'mongoose';
+'use server';
+
+import { NextResponse, NextRequest } from 'next/server';
 import Ad from '@/models/Ad';
 import connectDB from '@/utils/mongodb';
 
@@ -16,7 +17,7 @@ export async function GET() {
 }
 
 // ✅ POST - créer une nouvelle pub
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   try {
     await connectDB();
 
