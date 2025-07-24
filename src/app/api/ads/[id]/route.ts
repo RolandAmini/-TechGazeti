@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/db'; // Maintenant utilisé
+import { connectDB } from '@/lib/mongodb'; // Maintenant utilisé
 import Ad from '@/models/Ad';     // Maintenant utilisé
 
 export async function DELETE(
