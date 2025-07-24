@@ -1,16 +1,31 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/utils/mongodb';
-import Ad from '@/models/Ad';
+import connectDB from '@/lib/db'; // Maintenant utilisé
+import Ad from '@/models/Ad';     // Maintenant utilisé
 
 export async function DELETE(
   request: Request,
   context: { params: { id: string } }
 ) {
-  const { id } = context.params; // On extrait l'id comme ça
+  const { id } = context.params;
 
-  // ... le reste de votre logique pour supprimer l'élément
-  // avec l'id récupéré.
+  try {
+    await connectDB(); // On utilise la connexion à la DB
 
-  // Exemple de réponse
-  return NextResponse.json({ success: true, message: `Ad ${id} deleted` });
+    // On utilise le modèle pour trouver et supprimer la publicité
+    const deletedAd = await Ad.findByIdAndDelete(id);
+
+    if (!deletedAd) {
+      return NextResponse.json(
+        { success: false, message: 'Publicité non trouvée' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ success: true, message: 'Publicité supprimée' });
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, message: 'Erreur serveur' },
+      { status: 500 }
+    );
+  }
 }
