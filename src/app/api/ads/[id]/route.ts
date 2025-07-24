@@ -1,17 +1,16 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/lib/mongodb'; // Maintenant utilisé
-import Ad from '@/models/Ad';     // Maintenant utilisé
+import { connectDB } from '@/lib/mongodb';
+import Ad from '@/models/Ad';
 
 export async function DELETE(
-  request: Request,
-  context: { params: { id: string } }
+  request: Request, // Le premier argument est la requête
+  context: { params: { id: string } } // Le deuxième est le contexte avec les params
 ) {
-  const { id } = context.params;
+  const { id } = context.params; // On récupère l'id depuis le contexte
 
   try {
-    await connectDB(); // On utilise la connexion à la DB
+    await connectDB();
 
-    // On utilise le modèle pour trouver et supprimer la publicité
     const deletedAd = await Ad.findByIdAndDelete(id);
 
     if (!deletedAd) {
@@ -22,9 +21,9 @@ export async function DELETE(
     }
 
     return NextResponse.json({ success: true, message: 'Publicité supprimée' });
- } catch { // <-- On supprime complètement (_error)
+  } catch { // On utilise un catch vide, car on n'utilise pas l'erreur
     return NextResponse.json(
-      { success: false, message: 'Erreur serveur' },
+      { success: false, message: 'Erreur serveur lors de la suppression' },
       { status: 500 }
     );
   }
