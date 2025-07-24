@@ -22,10 +22,10 @@ export async function DELETE(
     }
 
     return NextResponse.json({ success: true, message: 'Publicité supprimée' });
-  } catch (error) {
-    return NextResponse.json(
-      { success: false, message: 'Erreur serveur' },
-      { status: 500 }
-    );
-  }
+ } catch (_error) { 
+  return NextResponse.json(
+    { success: false, message: 'Erreur serveur' },
+    { status: 500 }
+  );
+}
 }
