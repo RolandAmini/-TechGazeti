@@ -1,5 +1,11 @@
-import { NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 
-export async function DELETE() {
-  return NextResponse.json({ success: true, message: 'Suppression temporaire OK' });
-}
+const AdSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  // Ajoute ici les autres champs de ta collection
+});
+
+const Ad = mongoose.models.Ad || mongoose.model('Ad', AdSchema);
+
+export default Ad;
