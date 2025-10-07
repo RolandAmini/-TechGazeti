@@ -1,37 +1,29 @@
-import { v2 as cloudinary } from 'cloudinary';
-import { NextResponse } from 'next/server';
-import { Readable } from 'stream';
+import { NextRequest, NextResponse } from 'next/server';
+import { writeFile } from 'fs/promises';
+import path from 'path';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
-  api_key: process.env.CLOUDINARY_API_KEY!,
-  api_secret: process.env.CLOUDINARY_API_SECRET!,
-});
-
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const formData = await req.formData();
+    const formData = await request.formData();
     const file = formData.get('file') as File;
-
+    
     if (!file) {
-      return NextResponse.json({ success: false, message: 'Aucun fichier' }, { status: 400 });
+      return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
     }
 
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
 
-    const result = await new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream({ resource_type: 'auto' }, (error, result) => {
-        if (error) reject(error);
-        else resolve(result);
-      });
+    // Créer un nom de fichier unique
+    const filename = `${Date.now()}-${file.name}`;
+    const filepath = path.join(process.cwd(), 'public/images', filename);
 
-      Readable.from(buffer).pipe(stream);
-    });
+    // Sauvegarder le fichier
+    await writeFile(filepath, buffer);
 
-    return NextResponse.json({ success: true, result });
+    return NextResponse.json({ url: `/images/${filename}` });
   } catch (error) {
     console.error('Upload error:', error);
-    return NextResponse.json({ success: false, message: 'Erreur serveur' }, { status: 500 });
+    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
   }
 }
