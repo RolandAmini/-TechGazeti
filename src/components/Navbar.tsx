@@ -11,16 +11,16 @@ export default function Navbar() {
     <header className="bg-white shadow sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-black">
-          Gazeti
+             TechGazeti
         </Link>
  <nav className="space-x-6 hidden md:flex">
-  <Link href="https://www.instagram.com/votre_profil/" aria-label="Instagram">
+  <Link href="https://www.instagram.com/aminiroland/" aria-label="Instagram">
     <FontAwesomeIcon icon={faInstagram} className="h-6 w-6 text-gray-800 hover:text-pink-300" />
   </Link>
   <Link href="https://www.facebook.com/votre_profil/" aria-label="Facebook">
     <FontAwesomeIcon icon={faFacebook} className="h-6 w-6 text-gray-800 hover:text-pink-300" />
   </Link>
-  <Link href="https://www.votre_portfolio.com/" aria-label="Portfolio">
+  <Link href="https://portfolio2025-bpg3.vercel.app/" aria-label="Portfolio">
     <FontAwesomeIcon icon={faGlobe} className="h-6 w-6 text-gray-800 hover:text-pink-300" />
   </Link>
   <Link href="https://twitter.com/votre_profil/" aria-label="X (Twitter)">

@@ -58,7 +58,7 @@ export default function AdminPage() {
   const handleLogout = async () => {
     try {
       await fetch("/api/logout", { method: "POST" });
-      localStorage.removeItem("user");
+      localStorage.removeItem("token");
       router.push("/");
     } catch (error) {
       console.error("Erreur déconnexion:", error);
@@ -235,9 +235,13 @@ const [followers, setFollowers] = useState<Follower[]>([]);
               </div>
               
               <div className="flex items-center gap-2 sm:gap-4">
-                <button className="hidden sm:block p-2 hover:bg-gray-100 rounded-full transition-colors">
-                  <Search className="w-5 h-5 text-gray-600" />
-                </button>
+              <button
+  onClick={() => window.location.href = "/"}
+  className="hidden sm:block p-2 hover:bg-gray-100 rounded-full transition-colors"
+>
+  <Home className="w-5 h-5 text-gray-600" />
+</button>
+
                  <Link href="/admin/notifications">
                 <button className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
                   <Bell className="w-5 h-5 text-gray-600" />

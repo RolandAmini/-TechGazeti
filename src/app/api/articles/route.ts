@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
 
-    const query = status ? { status } : { status: 'published' };
+    const query = status ? { status } : {}; 
     const articles = await Article.find(query).sort({ createdAt: -1 });
 
     return NextResponse.json(articles);

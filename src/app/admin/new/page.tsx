@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Plus, MoreHorizontal, Bell, X, Image } from "lucide-react";
+import { Plus, MoreHorizontal, Bell, X, Image, Link } from "lucide-react";
 
 export default function NewArticlePage() {
   const [title, setTitle] = useState("");
@@ -44,8 +44,14 @@ export default function NewArticlePage() {
       {/* Header */}
       <header className="border-b border-gray-200 py-3 px-6 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <h1 className="text-3xl font-serif">Medium</h1>
-          <span className="text-sm text-gray-600">Draft in Roland Amini</span>
+          <h1 className="text-3xl font-serif">TechGazeti</h1>
+ <button
+  onClick={() => window.location.href = "/admin"}
+  className="text-sm text-gray-600 hover:text-blue-600 transition-colors"
+>
+  back to admi panel
+</button>
+
         </div>
         <div className="flex items-center gap-4">
           <button 

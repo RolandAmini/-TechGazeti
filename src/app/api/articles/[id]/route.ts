@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {connectDB} from '@/utils/mongodb';
+import connectDB from '@/utils/mongodb';
 import Article from '@/models/Article';
 
 // GET - Récupérer un article

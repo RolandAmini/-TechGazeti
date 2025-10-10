@@ -1,33 +1,54 @@
-import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
-import { serialize } from "cookie";
-import Admin from '@/models/Admin';
-import connectDB from '@/utils/mongodb';
-
-const JWT_SECRET = process.env.JWT_SECRET || 'supersecret';
+import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import  connectDB  from "@/utils/mongodb";
+import Admin from "@/models/Admin";
 
 export async function POST(req: NextRequest) {
-  await connectDB();
+  try {
+    await connectDB();
+    const { email, password } = await req.json();
 
-  const { username, password } = await req.json();
+    // Vérifie que les champs sont fournis
+    if (!email || !password) {
+      return NextResponse.json(
+        { message: "Email et mot de passe requis" },
+        { status: 400 }
+      );
+    }
 
-  const admin = await Admin.findOne({ username });
-  if (!admin || !(await admin.comparePassword(password))) {
-    return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+    // Recherche de l’admin dans la base
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      console.log("❌ Aucun admin trouvé avec cet email:", email);
+      return NextResponse.json(
+        { message: "Identifiants invalides" },
+        { status: 401 }
+      );
+    }
+
+    // Vérifie le mot de passe
+    const isMatch = await bcrypt.compare(password, admin.password);
+    console.log("✅ Vérification du mot de passe:", isMatch);
+
+    if (!isMatch) {
+      return NextResponse.json(
+        { message: "Identifiants invalides" },
+        { status: 401 }
+      );
+    }
+
+    // Connexion réussie
+    console.log("✅ Admin connecté:", admin.email);
+    return NextResponse.json(
+      { message: "Connexion réussie", email: admin.email },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Erreur API login:", error);
+    return NextResponse.json(
+      { message: "Erreur serveur", error },
+      { status: 500 }
+    );
   }
-
-  // Génère JWT
-  const token = jwt.sign({ id: admin._id, username: admin.username }, JWT_SECRET, { expiresIn: '1h' });
-
-  // Set cookie HTTP-only et secure
-  const cookie = serialize('authToken', token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 3600,  // 1 heure
-    path: '/',
-  });
-
-  const response = NextResponse.json({ message: 'Login successful' });
-  response.headers.set('Set-Cookie', cookie);
-  return response;
 }

@@ -1,32 +1,39 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/techgazeti';
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/techgazeti";
 
-// Define the type for the cached object to avoid TypeScript errors
+// Interface pour le cache Mongoose
 interface MongooseCache {
-  conn: mongoose.Mongoose | null;
-  promise: Promise<mongoose.Mongoose> | null;
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
 }
 
-// Extend the global object to include mongoose
+// Étendre le type global pour ajouter mongooseCache
 declare global {
   // eslint-disable-next-line no-var
-  var mongoose: MongooseCache;
+  var mongooseCache: MongooseCache | undefined;
 }
 
-let cached: MongooseCache = global.mongoose;
+// Si aucun cache n'existe encore, on l'initialise
+const globalForMongoose = global as typeof globalThis & {
+  mongooseCache?: MongooseCache;
+};
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+if (!globalForMongoose.mongooseCache) {
+  globalForMongoose.mongooseCache = { conn: null, promise: null };
 }
+
+const cached = globalForMongoose.mongooseCache!; // <-- le "!" dit à TypeScript : "je sais que ce n’est pas undefined"
 
 async function connectDB() {
   if (cached.conn) {
+    console.log("✅ MongoDB déjà connecté");
     return cached.conn;
   }
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
+      console.log("✅ MongoDB connecté avec succès");
       return mongoose;
     });
   }
