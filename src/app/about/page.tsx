@@ -72,7 +72,7 @@ export default function AboutPage() {
         <nav className="container mx-auto px-6 py-4">
           <a href="/" className="inline-flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors">
             <ArrowLeft size={20} />
-            <span className="font-medium">Retour à l'accueil</span>
+            <span className="font-medium">back Home</span>
           </a>
         </nav>
       </header>
@@ -84,9 +84,9 @@ export default function AboutPage() {
             À Propos de Nous
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            Nous sommes une plateforme dédiée au partage de connaissances en développement web. 
-            Notre mission est d'aider les développeurs francophones à progresser grâce à des 
-            articles de qualité, des tutoriels pratiques et une communauté bienveillante.
+          We are a platform dedicated to sharing web development knowledge.
+Our mission is to help French-speaking developers progress through
+quality articles, practical tutorials, and a supportive community.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
         </div>
@@ -115,7 +115,7 @@ export default function AboutPage() {
       {/* Values Section */}
       <section className="container mx-auto px-6 py-16">
         <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-          Nos Valeurs
+         Our Values
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {values.map((value, index) => (
@@ -136,7 +136,7 @@ export default function AboutPage() {
       {/* Timeline Section */}
       <section className="container mx-auto px-6 py-16 bg-white/50 backdrop-blur-sm my-16 rounded-3xl">
         <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-          Notre Histoire
+          Our History
         </h2>
         <div className="max-w-4xl mx-auto">
           <div className="relative">
@@ -171,10 +171,10 @@ export default function AboutPage() {
       {/* Team Section */}
       <section className="container mx-auto px-6 py-16">
         <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
-          Notre Équipe
+         Our Team
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Rencontrez les personnes passionnées qui rendent tout cela possible
+        Meet the passionate people who make it all possible
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {team.map((member, index) => (
@@ -241,11 +241,10 @@ export default function AboutPage() {
       <section className="container mx-auto px-6 py-16">
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center max-w-4xl mx-auto shadow-2xl">
           <h2 className="text-4xl font-bold text-white mb-6">
-            Rejoignez Notre Communauté
+            Join Our Community
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Abonnez-vous à notre newsletter pour recevoir les derniers articles, 
-            tutoriels et actualités du développement web directement dans votre boîte mail.
+           Subscribe to our newsletter to receive the latest articles, tutorials, and web development news directly to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input
@@ -254,7 +253,7 @@ export default function AboutPage() {
               className="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-4 focus:ring-white/50"
             />
             <button className="bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl">
-              S'abonner
+          Subscribe
             </button>
           </div>
           <div className="mt-8">
@@ -263,7 +262,7 @@ export default function AboutPage() {
               className="inline-flex items-center gap-2 text-white hover:text-blue-100 transition-colors"
             >
               <Mail size={20} />
-              <span className="font-medium">contact@example.com</span>
+              <span className="font-medium">aminiroland01@gmail.com</span>
             </a>
           </div>
         </div>

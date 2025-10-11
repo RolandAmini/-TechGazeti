@@ -105,7 +105,7 @@ export default function DemoPage() {
         <nav className="container mx-auto px-6 py-4">
           <a href="/" className="inline-flex items-center gap-2 text-white hover:text-purple-400 transition-colors">
             <ArrowLeft size={20} />
-            <span className="font-medium">Retour à l'accueil</span>
+            <span className="font-medium">Back Home</span>
           </a>
         </nav>
       </header>
@@ -114,10 +114,10 @@ export default function DemoPage() {
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Démos & Tutoriels
+            Demos & Tutoriels
           </h1>
           <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-            Découvrez comment utiliser notre plateforme à travers des vidéos explicatives et des démonstrations en direct
+Learn how to use our platform through how-to videos and live demonstrations
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export default function DemoPage() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
               <Star className="text-yellow-400" size={32} />
-              À la une
+             Featured
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredVideos.map((video) => (
@@ -163,7 +163,7 @@ export default function DemoPage() {
                     <div className="flex items-center gap-4 text-sm text-purple-300">
                       <span className="flex items-center gap-1">
                         <Eye size={16} />
-                        {video.views} vues
+                        {video.views}views
                       </span>
                     </div>
                   </div>
@@ -278,7 +278,7 @@ export default function DemoPage() {
                 onClick={() => setSelectedVideo(null)}
                 className="mt-6 bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition-colors"
               >
-                Fermer
+                Close
               </button>
             </div>
           </div>

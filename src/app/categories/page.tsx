@@ -103,7 +103,7 @@ export default function CategoriesPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-xl text-gray-600">Chargement des catégories...</div>
+        <div className="text-xl text-gray-600">Loading categories...</div>
       </div>
     );
   }
@@ -117,7 +117,7 @@ export default function CategoriesPage() {
         <nav className="container mx-auto px-6 py-4">
           <a href="/" className="inline-flex items-center gap-2 text-gray-700 hover:text-blue-600">
             <ArrowLeft size={20} />
-            <span className="font-medium">Retour à l'accueil</span>
+            <span className="font-medium">Back Home</span>
           </a>
         </nav>
       </header>
@@ -130,7 +130,7 @@ export default function CategoriesPage() {
             Explorez par Catégorie
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Découvrez nos articles organisés par thème pour faciliter votre apprentissage
+           Discover our articles organized by theme to facilitate your learning
           </p>
           
           {/* Stats */}
@@ -159,7 +159,7 @@ export default function CategoriesPage() {
         {/* Categories Grid */}
         {categories.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-xl text-gray-600">Aucune catégorie disponible pour le moment.</p>
+            <p className="text-xl text-gray-600">No categories available at the moment.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -223,13 +223,13 @@ export default function CategoriesPage() {
               Envie de voir tous les articles ?
             </h3>
             <p className="text-gray-600 mb-6">
-              Parcourez l'ensemble de notre bibliothèque d'articles
+              Browse our entire library of articles
             </p>
             <a
               href="/articles"
               className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              Voir tous les articles
+             See all articles
             </a>
           </div>
         </div>
