@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 async function generateHash() {
   // 👉 Remplace ce mot de passe par celui que tu veux utiliser pour te connecter
-  const password = "MonMotDePasseAdmin123"; 
+  const password = "roland5713"; 
 
   // Génération du hash
   const hashed = await bcrypt.hash(password, 10);
