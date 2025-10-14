@@ -53,7 +53,7 @@ export default function ArticlesPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-xl text-gray-600">Chargement des articles...</div>
+        <div className="text-xl text-gray-600">Loading articles...</div>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export default function ArticlesPage() {
         <nav className="container mx-auto px-6 py-4">
           <a href="/" className="inline-flex items-center gap-2 text-gray-700 hover:text-blue-600">
             <ArrowLeft size={20} />
-            <span className="font-medium">Retour à l'accueil</span>
+            <span className="font-medium text-red-600">Back Home</span>
           </a>
         </nav>
       </header>
@@ -75,10 +75,10 @@ export default function ArticlesPage() {
         {/* Title */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Tous les Articles
+            All Articles
           </h1>
           <p className="text-lg text-gray-600">
-            Découvrez tous nos articles publiés
+           Discover all our published articles
           </p>
         </div>
 
@@ -92,7 +92,7 @@ export default function ArticlesPage() {
                 : "bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >
-            Tous
+            All
           </button>
           {categories.map((category) => (
             <button
@@ -119,7 +119,7 @@ export default function ArticlesPage() {
         {/* Articles Grid */}
         {filteredArticles.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-xl text-gray-600">Aucun article trouvé dans cette catégorie.</p>
+            <p className="text-xl text-gray-600">No items found in this category.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

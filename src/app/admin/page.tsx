@@ -210,15 +210,21 @@ const [followers, setFollowers] = useState<Follower[]>([]);
         <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => setSidebarOpen(true)}
-                  className="lg:hidden p-2 text-gray-400 hover:text-gray-600"
-                >
-                  <Menu className="w-6 h-6" />
-                </button>
-                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
-              </div>
+               <div className="flex items-center gap-4">
+      <button
+        onClick={() => setSidebarOpen(true)}
+        className="lg:hidden p-2 text-gray-400 hover:text-gray-600"
+      >
+        <Menu className="w-6 h-6" />
+      </button>
+
+      <h1
+        onClick={() => router.push("/admin")}
+        className="cursor-pointer text-xl sm:text-2xl font-bold text-gray-900 hover:text-blue-600 transition"
+      >
+        Dashboard
+      </h1>
+    </div>
               
               <div className="flex items-center gap-2 sm:gap-4">
               <button
@@ -284,7 +290,7 @@ const [followers, setFollowers] = useState<Follower[]>([]);
                     <div className="p-4 sm:p-6 border-b border-gray-200 flex items-center justify-between">
                       <h3 className="text-lg font-bold text-gray-900">Articles récents</h3>
                       <Link href="admin/articles">
-                      <button className="text-sm text-green-600 hover:text-green-700 font-medium">Voir tout</button>
+                      <button className="text-sm text-green-600 hover:text-green-700 font-medium">See All</button>
                       </Link>
                     </div>
                     <div className="divide-y divide-gray-200">
