@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, FileText } from "lucide-react"; // <-- icônes Lucide
+import { ArrowLeft, FileText } from "lucide-react";
 
 type Article = {
   _id: string;
   title: string;
   content: string;
-  published: boolean; // true = publié, false = brouillon
+  status: string; // "published" ou "draft"
 };
 
 export default function ArticlesPage() {
@@ -16,11 +16,12 @@ export default function ArticlesPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  // Charger les articles
+  // Charger TOUS les articles (publiés + brouillons)
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await fetch("/api/articles");
+        // ✅ CORRECTION : Ajouter ?all=true pour récupérer tous les articles
+        const res = await fetch("/api/articles?all=true");
         const data = await res.json();
         setArticles(data);
       } catch (err) {
@@ -80,12 +81,13 @@ export default function ArticlesPage() {
               <div>
                 <h2 className="text-lg font-semibold">{article.title}</h2>
                 <p className="text-sm text-gray-600">
-                  {article.published ? "Publié" : "Brouillon"}
+                  {/* ✅ Badge de statut avec émojis */}
+                  {article.status === "published" ? "🟢 Publié" : "🟡 Brouillon"}
                 </p>
               </div>
               <div className="flex gap-2">
                 <button
-                  onClick={() => router.push(`/articles/edit/${article._id}`)}
+                  onClick={() => router.push(`/admin/articles/edit/${article._id}`)}
                   className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
                 >
                   Modifier

@@ -120,7 +120,7 @@ const [followers, setFollowers] = useState<Follower[]>([]);
               <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
                 RA
               </div>
-              <span className="font-bold text-xl text-gray-900">Mon Blog</span>
+              <span className="font-bold text-xl text-gray-900">my Articles</span>
             </div>
           </div>
 
@@ -149,8 +149,8 @@ const [followers, setFollowers] = useState<Follower[]>([]);
                 RA
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">Roland Admin</p>
-                <p className="text-xs text-gray-500 truncate">admin@blog.com</p>
+                <p className="text-sm font-blod text-gray-900 truncate">Mr MUKWEGE </p>
+                <p className="text-xs text-gray-500 truncate">aminiroland01@gmail.com</p>
               </div>
             </div>
             <button
@@ -158,7 +158,7 @@ const [followers, setFollowers] = useState<Follower[]>([]);
       className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
     >
       <LogOut className="w-4 h-4" />
-      <span>Déconnexion</span>
+      <span>Logout</span>
     </button>
           </div>
         </div>
@@ -199,21 +199,7 @@ const [followers, setFollowers] = useState<Follower[]>([]);
                 </button>
               ))}
             </nav>
-            <div className="p-4 border-t border-gray-200">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
-                  RA
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">Roland Admin</p>
-                  <p className="text-xs text-gray-500 truncate">admin@blog.com</p>
-                </div>
-              </div>
-              <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
-                <LogOut className="w-4 h-4" />
-                <span>Déconnexion</span>
-              </button>
-            </div>
+           
           </aside>
         </div>
       )}
@@ -231,7 +217,7 @@ const [followers, setFollowers] = useState<Follower[]>([]);
                 >
                   <Menu className="w-6 h-6" />
                 </button>
-                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Tableau de Bord</h1>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
               </div>
               
               <div className="flex items-center gap-2 sm:gap-4">
@@ -255,7 +241,7 @@ const [followers, setFollowers] = useState<Follower[]>([]);
                <Link href="/admin/new">
                 <button className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors text-sm font-medium">
                   <Plus className="w-4 h-4" />
-                  <span className="hidden sm:inline">Écrire</span>
+                  <span className="hidden sm:inline">write</span>
                 </button>
                  </Link>
               </div>
