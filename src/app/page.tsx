@@ -72,21 +72,14 @@ export default function HomePage() {
               aria-label="Rechercher"
             />
           </form>
-          {isLoggedIn ? (
-            <Link
-              href="/admin"
-              className="px-4 py-2 rounded-xl bg-green-600 text-white font-medium hover:bg-green-700 transition"
-            >
-              Back to Admin
-            </Link>
-          ) : (
-            <Link
-              href="/admin/login"
-              className="px-4 py-2 rounded-xl bg-yellow-400 text-black font-medium hover:bg-pink-300 transition"
-            >
-              Login
-            </Link>
-          )}
+         {isLoggedIn && (
+  <Link
+    href="/admin"
+    className="px-4 py-2 rounded-xl bg-green-600 text-white font-medium hover:bg-green-700 transition"
+  >
+    Back to Admin
+  </Link>
+)}
         </nav>
       </header>
 

@@ -23,7 +23,7 @@
     "cookie": "^1.0.2",
     "formidable": "^3.5.4",
     "framer-motion": "^12.19.2",
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.523.0",
     "mongoose": "^8.16.0",
     "multer": "^2.0.1",
